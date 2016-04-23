@@ -18,8 +18,8 @@ sha512sums=('883b12b23cad21f620fb10e6f682390d155da65f41517701296793e7ad4ca16e555
             '2ee770dce7cbf95d07b49e24522c6be2d7dd8f3cbe88097d6b27a9ea05052525ef58ef6c2f95bf09bcbc38db46918098faf13655c0f6853b3057dac9ec10e6bb')
 
 package() {
-    install -dm755 diagnose.shutdown /usr/lib/systemd/system-shutdown/
-    install -dm755 start-diagnose-shutdown /usr/bin/
-    install -dm755 analyze-shutdown /usr/bin/
-    install -dm644 shutdown-diagnose.service /usr/lib/systemd/system/
+    install -Dm755 diagnose.shutdown "$pkgdir/usr/lib/systemd/system-shutdown/diagnose.shutdown"
+    install -Dm755 start-diagnose-shutdown "$pkgdir/usr/bin/start-diagnose-shutdown"
+    install -Dm755 analyze-shutdown "$pkgdir/usr/bin/analyze-shutdown"
+    install -Dm644 shutdown-diagnose.service "$pkgdir/usr/lib/systemd/system/shutdown-diagnose.service"
 }
