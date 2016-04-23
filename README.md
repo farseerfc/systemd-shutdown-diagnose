@@ -30,6 +30,35 @@ analyze-shutdown </shutdown.log
 
 The output will be a list of all process, their name and PID, the time when they shutdown, and the signals they recieved.
 
+# Example of output
+
+```
+start-diagnose-(1718) exited at          0s, got signals: 
+systemd-cgroups(1825) exited at   0.002294s, got signals: 
+systemd-cgroups(1826) exited at   0.002307s, got signals: 
+QDBusConnection( 776) exited at  83.975056s, got signals: 
+        QThread( 780) exited at  83.975110s, got signals: 
+kactivitymanage( 764) exited at  83.975163s, got signals: 
+        QThread( 779) exited at  83.975575s, got signals: 
+        QThread( 778) exited at  83.978465s, got signals: 
+systemd-cgroups(1827) exited at  83.983387s, got signals: 
+ systemd-logind( 468) exited at  83.984484s, got signals:  9(83.984228)
+systemd-user-se(1828) exited at  84.000099s, got signals: 
+systemd-cgroups(1829) exited at  84.004714s, got signals: 
+         umount(1861) exited at  84.217824s, got signals: 
+...
+        systemd(1878) exited at  84.240749s, got signals: 
+systemd-cgroups(1877) exited at  84.266284s, got signals: 
+  systemd-udevd( 241) exited at  84.269505s, got signals:  19(84.267333)
+  kworker/u16:7(1879) exited at  84.287657s, got signals: 
+systemd-journal( 196) exited at  84.290971s, got signals:  19(84.267336)
+  kworker/u16:7(1880) exited at  84.291027s, got signals: 
+  kworker/u16:7(1881) exited at  84.292804s, got signals: 
+          mount(1885) exited at  84.427401s, got signals: 
+```
+
+We can see from the output here, QDBusConnection (might be a thread owned by kactivitymanager) is the one to be blamed.
+
 # How it works
 
 The details are documented in the original blog post in Chinese:
