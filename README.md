@@ -8,7 +8,7 @@ help to diagnose why systemd cannot shutdown properly.
 
 Build the package by:
 ```
-makpkg
+makepkg
 ```
 
 Install the package using `pacman -U`.
@@ -25,6 +25,6 @@ After restart, there will be a log filename at `/shutdown.log`
 that records the sequence of all process shudown in ftrace format.
 To make it more readable, parse the log by:
 ```
-analyze-shutdow </shutdown.log
+analyze-shutdown </shutdown.log
 ```
 
