@@ -38,15 +38,18 @@ https://co-op.space/systemd-guan-ji-chao-shi-wen-ti-ding-wei-fang-fa/
 The idea is to use ftrace to collect all needed infomation and record it in a log file.
 To do this, we need to start ftrace just after `systemd shutdown|reboot` and before every process actually shutdown. So we have a `shutdown-diagnose.service` to be fired at the right timing.
 
-The trick here is to combine `RemainAfterExit` and `ExecStop` on a `oneshot` service:
+The trick here is to combine `RemainAfterExit` and `ExecStop` on a `idle` service:
 ```
 [Service]
-Type=oneshot
+Type=idle
 RemainAfterExit=yes
 ExecStop=/usr/bin/start-diagnose-shutdown
 ```
 
-By doing this, the service is considered `Active` after the system boot up, and execute `start-diagnose-shutdown` when systemd let it stop. In `start-diagnose-shutdown` we turn on ftrace to collect process kill events and signal events:
+By doing this, the service is considered `Active` after the system boot up entering idle state, and execute `start-diagnose-shutdown` when systemd let it stop.
+Because this service is usually the last one to start on a system, it will be stopped firstly by systemd.
+Then we can ensure that the `start-diagnose-shutdown` is executated early enough. (Services that stopped before our service is ignorable here as they are not causing problems).
+In `start-diagnose-shutdown` we turn on ftrace to collect process kill events and signal events:
 ```
 echo syscalls:sys_enter_exit >set_event
 echo syscalls:sys_enter_kill >>set_event
