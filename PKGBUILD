@@ -1,11 +1,11 @@
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
 pkgname=systemd-shutdown-diagnose
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="help to diagnose shutdown sequence for systemd"
 arch=(any)
 url="http://github.com/farseerfc/systemd-shutdown-diagnose"
-license=('GPL')
+license=('GPL2')
 depends=()
 source=('analyze-shutdown'
     'diagnose.shutdown'
