@@ -1,6 +1,6 @@
 # Maintainer: Jiachen Yang <farseerfc@gmail.com>
 pkgname=systemd-shutdown-diagnose
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc="help to diagnose shutdown sequence for systemd"
 arch=(any)
