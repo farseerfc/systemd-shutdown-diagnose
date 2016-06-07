@@ -21,11 +21,11 @@ systemctl start shutdown-diagnose.service
 
 Then restart your system.
 
-After restart, there will be a log file at `/shutdown.log`
+After restart, there will be a log file at `/var/log/shutdown.log`
 that records the sequence of all process shudown in ftrace format.
 To make it more readable, parse the log by:
 ```
-analyze-shutdown </shutdown.log
+analyze-shutdown </var/log/shutdown.log
 ```
 
 The output will be a list of all process, their name and PID, the time when they shutdown, and the signals they recieved.
@@ -97,7 +97,7 @@ Then we need to write out the collected ftrace log into a file right after all s
 ```
 #!/bin/sh
 mount -o remount,rw /
-cat /sys/kernel/debug/tracing/trace >/shutdown.log
+cat /sys/kernel/debug/tracing/trace >/var/log/shutdown.log
 mount -o remount,ro /
 ```
 We remount the root filesystem as read-write, write the ftrace log into it, and remount it read-only.
