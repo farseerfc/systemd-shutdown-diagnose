@@ -22,7 +22,7 @@ systemctl start shutdown-diagnose.service
 Then restart your system.
 
 After restart, there will be a log file at `/var/log/shutdown.log`
-that records the sequence of all process shudown in ftrace format.
+that records the sequence of all process shutdown in ftrace format.
 To make it more readable, parse the log by:
 ```
 analyze-shutdown </var/log/shutdown.log
