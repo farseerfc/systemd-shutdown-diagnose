@@ -1,5 +1,5 @@
 # systemd-shutdown-diagnose
-Take from https://co-op.space/systemd-guan-ji-chao-shi-wen-ti-ding-wei-fang-fa/ ,
+Take from https://co-op.space/2016/03/10/systemd-guan-ji-chao-shi-wen-ti-ding-wei-fang-fa/ ,
 help to diagnose why systemd cannot shutdown properly.
 
 ***This may break your system! Use with CAUTION!***
