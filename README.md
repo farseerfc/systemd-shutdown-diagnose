@@ -62,7 +62,7 @@ We can see from the output here, QDBusConnection (might be a thread owned by kac
 # How it works
 
 The details are documented in the original blog post in Chinese:
-https://co-op.space/systemd-guan-ji-chao-shi-wen-ti-ding-wei-fang-fa/
+https://co-op.space/2016/03/10/systemd-guan-ji-chao-shi-wen-ti-ding-wei-fang-fa/
 
 The idea is to use ftrace to collect all needed infomation and record it in a log file.
 To do this, we need to start ftrace just after `systemd shutdown|reboot` and before every process actually shutdown. So we have a `shutdown-diagnose.service` to be fired at the right timing.
